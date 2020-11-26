@@ -69,12 +69,15 @@ router.get('/:id', async (req, res) => {
   res.send(result);
 });
 
-// router.delete('/:id', async (req, res) => {
-//   const { id } = req.params;
-//   const query = 'MATCH (w:Wine {id: $id}) DELETE w';
-//   const params = { id };
-//   const result = await db.executeQuery(query, params);
-//   res.send(result);
-// });
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  const query = `
+    MATCH (w:Wine { id: $id })
+    DETACH DELETE w
+  `;
+  const params = { id };
+  const result = await db.executeQuery(query, params);
+  res.send(result);
+});
 
 module.exports = router;
