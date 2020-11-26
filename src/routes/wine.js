@@ -54,7 +54,7 @@ router.get('/', async (req, res) => {
     MATCH (f:Flavor)<-[:HAS_FLAVOR]-(w: Wine)-[:HAS_BRAND]->(b:Brand)
     RETURN w.id as id, w.name as name, w.price as price, f.name as flavor, b.name as brand
   `;
-  const result = await db.executeQuery(query, {}, 'array');
+  const result = await db.executeQuery(query, {}, 'table');
   res.send(result);
 });
 
@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
     RETURN w.id as id, w.name as name, w.price as price, f.name as flavor, b.name as brand
   `;
   const params = { id };
-  const result = await db.executeQuery(query, params, 'array');
+  const result = await db.executeQuery(query, params, 'table');
   res.send(result);
 });
 

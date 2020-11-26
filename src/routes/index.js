@@ -6,5 +6,6 @@ module.exports = (app) => {
   app.use('/api/wine', require('./wine'));
   app.use('/api/person', require('./person'));
   app.use('/api/likes', require('./likes'));
+  app.use('/api/recommendations', require('./recommendations'));
   app.use(error);
 };
