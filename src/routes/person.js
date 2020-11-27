@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
   const query = 'MATCH (p:Person {id: $id}) RETURN p LIMIT 100';
   const params = { id };
   const result = await db.executeQuery(query, params);
-  res.send(result);
+  res.send(result[0]);
 });
 
 router.delete('/:id', async (req, res) => {
