@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     wineId,
   };
   const result = await db.executeQuery(query, params);
-  res.send(result);
+  res.send(result[0]);
 });
 
 router.get('/:personId', async (req, res) => {
@@ -37,7 +37,7 @@ router.delete('/', async (req, res) => {
     wineId,
   };
   const result = await db.executeQuery(query, params);
-  res.send(result);
+  res.send(result[0]);
 });
 
 module.exports = router;
