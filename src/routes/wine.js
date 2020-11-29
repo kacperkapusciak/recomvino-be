@@ -66,7 +66,7 @@ router.get('/:id', async (req, res) => {
   `;
   const params = { id };
   const result = await db.executeQuery(query, params, 'table');
-  res.send(result);
+  res.send(result[0]);
 });
 
 router.delete('/:id', async (req, res) => {
